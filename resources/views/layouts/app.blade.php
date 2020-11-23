@@ -75,15 +75,19 @@
         </nav>
 
         <main class="py-4">
+            <div class="loader flex-center" v-if="isLoading">
+            <div class="loading">
+                <bounce v-bind:loading="isLoading"></bounce>
+            </div>
+        </div>
             @yield('content')
         </main>
     </div>
-    <!-- jQuery -->
-        <script src="//code.jquery.com/jquery.js"></script>
-        <!-- DataTables -->
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-        <!-- Bootstrap JavaScript -->
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!-- App scripts -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="{{ asset('/js/app.js') }}"></script>
+        @yield('scripts')
 </body>
 </html>

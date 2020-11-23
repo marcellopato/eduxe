@@ -75,3 +75,13 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            isLoading: false
+        }
+    });
+</script>
+@endsection

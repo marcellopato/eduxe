@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Cadastro de Escolas</div>
                 <div class="card-body">
-                    <form action="{{ route('school.store') }}" method="post" enctype="multipart/form-data" class="form">
+                    <form action="{{ route('school.update', ['id' => $school->id]) }}" method="post" enctype="multipart/form-data" class="form">
                         @csrf
                         @method('POST')
                         <div class="card-body">
@@ -25,11 +25,7 @@
                                         <label>CNPJ</label>
                                         <input type="text" name="cnpj" id="cnpj"
                                             class="form-control" v-model="cnpj"
-                                            v-mask="'##.###.###/####-##'" autocomplete="off"
-                                            placeholder="{{ old('cnpj') }}" value="{{ old('cnpj') }}"
-                                            @keydown="$event.keyCode === 13 ? $event.preventDefault() : false"
-                                            @blur="getCNPJ">
-                                            <small v-if="erroCNPJ ==1" class="text-danger">Campo obrigatório!</small>
+                                            v-mask="'##.###.###/####-##'" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -40,8 +36,7 @@
                                         <label>Nome</label>
                                         <input type="text"
                                             class="form-control"
-                                            name="company_name" v-model="company_name"
-                                            placeholder="{{ old('company_name') }}" value="{{ old('company_name') }}">
+                                            name="company_name" v-model="company_name" readonly>
                                     </div>
                                 </div>
 
@@ -66,7 +61,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label>Contato</label>
-                                        <input type="text" name="contact" value="{{ old('contact') }}"
+                                        <input type="text" name="contact" value="{{ old('contact') }}" v-model="contact"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -162,7 +157,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="float-right btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="float-right btn btn-primary">Atualizar</button>
                         </div>
                     </form>
                 </div>
@@ -177,23 +172,24 @@
     var vue = new Vue({
         el: '#app',
         data: {
-            cnpj: '{{ old("cnpj") }}',
+            cnpj: '{{ $school->cnpj }}',
             erroCNPJ:'',
-            fantasy_name: '{{ old("fantasy_name") }}',
-            phone: '{{ old("phone") }}',
-            zip_code:'{{ old("zip_code") }}',
-            address:'{{ old("address") }}',
-            email: '{{ old("email") }}',
-            address_number:'{{ old("address_number") }}',
-            city:'{{ old("city") }}',
-            state:'{{ old("state") }}',
-            company_name:'{{ old("company_name") }}',
-            cellphone:'{{  old("cellphone") }}',
-            neighborhood:'{{ old("neighborhood") }}',
-            complement:'{{ old("complement") }}',
-            segmento: '{{ old("segmento") }}',
-            inscricao_municipal: '{{ old("inscricao_municipal") }}',
-            inscricao_estadual: '{{ old("inscricao_estadual") }}',
+            fantasy_name: '{{ $school->fantasy_name }}',
+            phone: '{{ $school->phone }}',
+            zip_code:'{{ $school->zip_code }}',
+            address:'{{ $school->address }}',
+            contact: '{{ $school->contact }}',
+            email: '{{ $school->email }}',
+            address_number:'{{ $school->address_number }}',
+            city:'{{ $school->city }}',
+            state:'{{ $school->state }}',
+            company_name:'{{ $school->company_name }}',
+            cellphone:'{{  $school->cellphone }}',
+            neighborhood:'{{ $school->neighborhood }}',
+            complement:'{{ $school->complement }}',
+            segmento: '{{ $school->segmento }}',
+            inscricao_municipal: '{{ $school->inscricao_municipal }}',
+            inscricao_estadual: '{{ $school->inscricao_estadual }}',
             isLoading: false,
             erroCNPJ: 0,
             zip_codeNaoExiste: false

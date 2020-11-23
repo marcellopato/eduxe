@@ -8,3 +8,6 @@ Vue.use(VueTheMask);
 
 import money from 'v-money'
 Vue.use(money)
+
+import VueSpinners from 'vue-spinners'
+Vue.use(VueSpinners)
