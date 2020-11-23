@@ -6,10 +6,12 @@
 Para rodar esse site
 
 - Clone esse repositório
-- Faça ```mv .env.example .env
+- Faça ```mv .env.example .env```
 - Rode php artisan key:generate
 - Configure suas credenciais de banco de dados na .env
 - Faça um fresh migrate
+- Faça ```npm install && npm run dev``` para compilar o componente Loading.vue
+
 
 
 ## License
